@@ -1,0 +1,11 @@
+1 ADD PID , THATS IT
+2 add support for end of video error
+3 remove segmentation error
+4 replace infinite delay loop with sleep function
+4 beautify code
+
+three tasks being done in code are
+ 
+file handling
+image processing
+pid usage

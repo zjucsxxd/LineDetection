@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/shikher/ip/line/linetuning.cpp
+opencv2/highgui/highgui.hpp
+/home/shikher/ip/line/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+/home/shikher/ip/line/opencv2/imgproc/imgproc.hpp
+string.h
+-
+cstdlib
+-
+fstream
+-
+ctime
+-
+opencv/highgui.h
+-
+opencv2/opencv.hpp
+-
+iostream
+-
+vector
+-
+

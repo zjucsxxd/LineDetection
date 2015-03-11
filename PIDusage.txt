@@ -1,0 +1,24 @@
+#include "libPID.cpp"
+
+double inputfunc()
+{
+	//process image taken by camera and calculate the angle
+	return angle;
+}
+
+void outputfunc(double)
+{
+	//use the output to do desired job
+	system("./mcntrl r pwm");
+}
+
+main()
+{
+	pid turn(inputfunc, outputfunc);
+
+//	void setConstants(double kp, double ki, double kd, double tolerance);
+//    	void outputLimits(double min, double max);
+//    	void execute(double finalstate);
+
+}
+	
