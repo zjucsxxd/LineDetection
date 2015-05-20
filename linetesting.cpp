@@ -137,10 +137,9 @@ int main(int argc,char **argv)
 		float set2[num];
 		fprintf(fp,"%d ",num);
 		int count5 =1;int flag =0;int count6 = 1;
-		int count1,count2;count1=count2=1;
-		float angle_f1,angle_f2;angle_f1=angle_f2 =0;
-		float rho_1,rho_2;rho_1= rho_2 = 0;
-		for(size_t i=0;i<num;i++)
+		int count1=1,count2=1;
+		float angle_f1=0,angle_f2=0;
+		for(int i=0;i<num;i++)
 		{
 			Vec4i l = lines[i];
 			line(path,Point(l[0],l[1]),Point(l[2],l[3]),Scalar(255,0,0),1,CV_AA);
@@ -179,7 +178,7 @@ int main(int argc,char **argv)
 				angle_f1 += angle[(int)(set1[0])];
 			if (i!= 0)
 			{
-				if( 1.0<(int)(set1[i])<10.0) 
+				if( (int)(set1[i])>1.0 && (int)(set1[i])<10.0) 
 				{
 					angle_f1 += angle[(int)(set1[i])];
 					count1 +=1;
@@ -191,7 +190,7 @@ int main(int argc,char **argv)
 			if (i==0)
 				angle_f2 += angle[(int)(set2[0])];
 			if (i!=0)
-			if(0.0<(int)(set2[i])<10.0) 
+			if((int)(set2[i])>0.0  && (int)(set2[i])<10.0) 
 			{
 				angle_f2 += angle[(int)(set2[i])];
 				count2 +=1;  
@@ -208,8 +207,8 @@ int main(int argc,char **argv)
 		angle_f1=angle_f1/count1;
 		angle_f2=angle_f2/count2;
 		//this line is causing segmentation fault
-		rho_1=p[(int)set1[0]];
-		rho_2=p[(int)set2[0]];
+		//float rho_1=p[(int)set1[0]];
+		//float rho_2=p[(int)set2[0]];
 		fprintf(fp,"Set 2 : %f,%f ",angle_f1,angle[(int)set1[2]]);
 		fprintf(fp,"\n \n");
 		imshow("IMAGE1",img);
@@ -217,7 +216,7 @@ int main(int argc,char **argv)
 		//contour detection and drawing
 		findContours(edge,contours,hierarchy,CV_RETR_TREE,CV_CHAIN_APPROX_SIMPLE,Point(0,0));
 		Mat drawing=Mat::zeros(edge.size(),CV_8UC3);
-		for(int i=0;i<contours.size();i++)
+		for(unsigned int i=0;i<contours.size();i++)
 		{
 			Scalar color=Scalar(rng.uniform(0, 255),rng.uniform(0,255),rng.uniform(0,255));
 			drawContours(drawing,contours,i,color,2,8,hierarchy,0,Point());
